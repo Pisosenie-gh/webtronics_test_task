@@ -21,7 +21,7 @@ def read_users(
     current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
-    Retrieve users.
+    ВСЕ ПОЛЬЗОВАТЕЛИ
     """
     users = crud.user.get_multi(db, skip=skip, limit=limit)
     return users
@@ -35,7 +35,7 @@ def create_user(
     current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
-    Create new user.
+    СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ
     """
     user = crud.user.get_by_email(db, email=user_in.email)
     if user:
@@ -61,7 +61,7 @@ def update_user_me(
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
-    Update own user.
+    ОБНОВЛЕНИЕ ПОЛЬЗОВАТЕЛЯ
     """
     current_user_data = jsonable_encoder(current_user)
     user_in = schemas.UserUpdate(**current_user_data)
@@ -81,7 +81,7 @@ def read_user_me(
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
-    Get current user.
+    ПОЛУЧИТЬ ЮЗЕРА
     """
     return current_user
 
@@ -95,7 +95,7 @@ def create_user_open(
     full_name: str = Body(None),
 ) -> Any:
     """
-    Create new user without the need to be logged in.
+    СОЗДАТЬ ЮЗЕРА
     """
 
     user = crud.user.get_by_email(db, email=email)
@@ -116,7 +116,7 @@ def read_user_by_id(
     db: Session = Depends(deps.get_db),
 ) -> Any:
     """
-    Get a specific user by id.
+    ЗАБРАТЬ ЮЗЕРА ПО АЙДИ
     """
     user = crud.user.get(db, id=user_id)
     if user == current_user:
@@ -137,7 +137,7 @@ def update_user(
     current_user: models.User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
-    Update a user.
+    ОБНОВИТЬ ПОЛЬЗОВАТЕЛЯ
     """
     user = crud.user.get(db, id=user_id)
     if not user:
