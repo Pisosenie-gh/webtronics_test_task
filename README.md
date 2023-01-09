@@ -14,6 +14,9 @@
 docker-compose up -d --build
 ```
 
+
+## Проект по адресу http://localhost/docs
+
 # Для запуска тестов 
 
 ```Bash
