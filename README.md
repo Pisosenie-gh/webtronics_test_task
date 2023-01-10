@@ -16,6 +16,8 @@ docker-compose up -d --build
 
 
 ## Проект по адресу http://localhost/docs
+## Создание юзера http://localhost/api/v1/users/open
+# Данные для бд и т.д в файле .env
 
 # Для запуска тестов 
 
